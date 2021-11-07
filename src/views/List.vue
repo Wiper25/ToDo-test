@@ -38,11 +38,14 @@
             <td>
               <b-button
                 class="list__btn-group"
-                @click="card.status = !card.status"
+                @click="(card.status = !card.status), changeRecording()"
                 >{{ card.status ? "Открыть" : "Закрыть" }}</b-button
               >
+              <b-button class="list__btn-group">Редактировать</b-button>
             </td>
-            <td :class="{ done: card.status }">{{ card.title }}</td>
+            <td :class="{ done: card.status }">
+              {{ card.title }}
+            </td>
             <td :class="{ done: card.status }">{{ card.description }}</td>
             <td :class="{ done: card.status }">
               <h6 v-if="card.importance == 'A'">Высокий</h6>
@@ -57,6 +60,7 @@
             </td>
           </tr>
         </table>
+        <div class="modelMenuRecording"></div>
       </div>
     </div>
 
@@ -76,10 +80,29 @@
 export default {
   data() {
     return {
+      options: [
+        { value: "red", text: "Красный маркер" },
+        { value: "blue	", text: "Синий маркер" },
+        { value: "orange", text: "Оранжевый маркер" },
+        { value: "green", text: "Зеленый маркер" },
+        { value: "yellow", text: "Желтый маркер" },
+        { value: "darkmagenta", text: "Фиолетовый маркер" },
+        { value: "black", text: "Черный маркер" },
+        { value: "deeppink", text: "Розовый маркер" },
+        { value: "dodgerblue", text: "Голубой маркер" },
+        { value: "saddlebrown", text: "Коричневый маркер" },
+        { value: "sandybrown", text: "Бежевый маркер" },
+        { value: "grey", text: "Серый маркер" },
+      ],
+      modalShow: false,
       cards: JSON.parse(localStorage.getItem("card")),
     };
   },
   methods: {
+    changeRecording(i) {
+      localStorage.setItem(`card`, JSON.stringify(this.cards));
+      // console.log("ok: ", i);
+    },
     clear() {
       localStorage.clear();
     },
