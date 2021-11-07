@@ -4,18 +4,18 @@
       <router-link to="/">Главная</router-link>
       <router-link to="/list">Список задач</router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style lang="scss">
-  #nav {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-  }
-  #app {
-    font-family: 'Oswald', sans-serif;
-    margin: 20px;
-  }
+#nav {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+#app {
+  font-family: "Oswald", sans-serif;
+  margin: 20px;
+}
 </style>
